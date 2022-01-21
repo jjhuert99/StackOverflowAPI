@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StackOverflowAPI</string>
+    <string name="stack_overflow_api_title">Stack Overflow API</string>
 </resources>
