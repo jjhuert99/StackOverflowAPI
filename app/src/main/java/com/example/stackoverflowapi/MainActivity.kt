@@ -11,3 +11,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+//BASE_URL = https://api.stackexchange.com/
