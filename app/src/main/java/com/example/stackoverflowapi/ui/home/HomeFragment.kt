@@ -1,13 +1,13 @@
 package com.example.stackoverflowapi.ui.home
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.stackoverflowapi.R
 import com.example.stackoverflowapi.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,11 +20,23 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        
         val binding = HomeFragmentBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        binding.stackOverflowPostsRV.adapter = StackOverflowPostAdapter(Clicked {
+            postLink ->
+
+            gotToUrl(postLink)
+        })
         return binding.root
     }
 
+    private fun gotToUrl(postLink: String) {
+        val webIntent: Intent = Uri.parse(postLink).let { webpage ->
+            Intent(Intent.ACTION_VIEW, webpage)
+        }
+        startActivity(webIntent)
+    }
 }
