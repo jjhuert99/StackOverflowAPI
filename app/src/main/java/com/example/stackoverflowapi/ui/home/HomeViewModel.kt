@@ -38,7 +38,6 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(dispatcher.IO){
             when(val response = StackOverflowRepo.getPosts()){
                 is ServiceResult.Succes ->{
-
                     //list containing all posts
                     val preFilter = response.data?.items
                     //list after filtering out posts with no accepted answer and less than x answers
@@ -51,7 +50,6 @@ class HomeViewModel @Inject constructor(
                             }
                         }
                     }
-
                     _post.postValue(filteredList)
                     _status.postValue(CallStatus.DONE)
                 }
