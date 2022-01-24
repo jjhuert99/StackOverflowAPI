@@ -25,9 +25,8 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.stackOverflowPostsRV.adapter = StackOverflowPostAdapter(Clicked {
+        binding.stackOverflowPostsRV.adapter = StackOverflowPostAdapter( Clicked {
             postLink ->
-
             gotToUrl(postLink)
         })
         return binding.root
